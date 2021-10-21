@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 377.771, 93.0019 )
+
+[node name="Crowd" type="Area2D"]
+space_override = 3
+gravity_vec = Vector2( -15, 1 )
+linear_damp = 10.0
+priority = 128.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 519.957, 483.066 )
+shape = SubResource( 3 )
