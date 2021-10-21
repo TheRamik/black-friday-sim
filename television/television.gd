@@ -13,7 +13,7 @@ func _ready():
 
 func launch(force : Vector2) -> void:
 	
-	apply_impulse(Vector2.ZERO, force)
+	apply_impulse(Vector2.ZERO, force * 3)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

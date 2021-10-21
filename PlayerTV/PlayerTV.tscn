@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://VectorCreator/VectorCreator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://television/television.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource( 1 )
+
+[node name="PlayerTV" type="Node2D"]
+
+[node name="VectorCreator" parent="." instance=ExtResource( 2 )]
+position = Vector2( 7.55109, -110.365 )
+
+[node name="television" parent="." instance=ExtResource( 3 )]
+position = Vector2( 67.7208, -15.1191 )
+mass = 1.12245
+gravity_scale = 5.0
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -39.0576, -3.77975 )
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+show_behind_parent = true
+material = SubResource( 2 )
+use_parent_material = true
+position = Vector2( 67.4059, -15.119 )
+rotation = -4.82398
+node_a = NodePath("../television")
+node_b = NodePath("../player")
+disable_collision = false
+length = 105.0
+rest_length = 105.0
+stiffness = 0.1
+damping = 0.3
+
+[connection signal="vector_created" from="VectorCreator" to="television" method="launch"]
