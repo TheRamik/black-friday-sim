@@ -1,14 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://player/player.png" type="Texture" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.01088, 7.86287 )
+[ext_resource path="res://player/player1.png" type="Texture" id=1]
 
 [node name="player" type="RigidBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -1.50262, 0.618725 )
+scale = Vector2( 1.80433, 3.14784 )
+polygon = PoolVector2Array( -5.84534, -2.81677, -5.94331, -9.2188, 5.32362, -9.27496, 5.12767, -2.92908, 7.57701, -2.87293, 7.47904, 4.8769, 5.22565, 4.8769, 5.32362, 8.69565, 2.97226, 8.63949, 3.26618, 4.93305, -3.49398, 4.98921, -3.59195, 8.69565, -5.84534, 8.69565, -5.74737, 4.8769, -8.1967, 4.8769, -8.00075, -2.76061, -6.13926, -2.81677 )

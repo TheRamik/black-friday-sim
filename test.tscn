@@ -31,9 +31,6 @@ points = PoolVector2Array( 63, 59, 0, 59, 0, 1, 63, 1 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 5.29736, 81.5786 )
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 format = 1

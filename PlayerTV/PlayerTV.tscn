@@ -13,19 +13,44 @@ shader = SubResource( 1 )
 
 [node name="PlayerTV" type="Node2D"]
 
-[node name="VectorCreator" parent="." instance=ExtResource( 2 )]
-position = Vector2( 7.55109, -110.365 )
-
 [node name="television" parent="." instance=ExtResource( 3 )]
 position = Vector2( 67.7208, -15.1191 )
+collision_layer = 2
 mass = 1.12245
 gravity_scale = 5.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="television"]
+
+[node name="VectorCreator" parent="television/CanvasLayer" instance=ExtResource( 2 )]
+position = Vector2( 817.081, 317.213 )
+
+[node name="Camera2D" type="Camera2D" parent="television"]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -39.0576, -3.77975 )
+mass = 0.510204
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="."]
+show_behind_parent = true
+material = SubResource( 2 )
+use_parent_material = true
+position = Vector2( 89.9371, 50.1839 )
+rotation = 2.91841
+node_a = NodePath("../player")
+node_b = NodePath("../television")
+disable_collision = false
+length = 105.0
+rest_length = 90.0
+stiffness = 1.0
+damping = 0.3
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
-show_behind_parent = true
+modulate = Color( 0.384314, 0.156863, 0.156863, 1 )
+self_modulate = Color( 0.298039, 0.0980392, 0.0980392, 1 )
+light_mask = 13
 material = SubResource( 2 )
 use_parent_material = true
 position = Vector2( 67.4059, -15.119 )
@@ -34,8 +59,8 @@ node_a = NodePath("../television")
 node_b = NodePath("../player")
 disable_collision = false
 length = 105.0
-rest_length = 105.0
-stiffness = 0.1
+rest_length = 90.0
+stiffness = 1.0
 damping = 0.3
 
-[connection signal="vector_created" from="VectorCreator" to="television" method="launch"]
+[connection signal="vector_created" from="television/CanvasLayer/VectorCreator" to="television" method="launch"]
