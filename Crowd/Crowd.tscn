@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Crowd/ScrollingBG.gd" type="Script" id=1]
-[ext_resource path="res://art/meep02.png" type="Texture" id=2]
+[ext_resource path="res://Crowd/meepArmy01.png" type="Texture" id=2]
+[ext_resource path="res://television/television.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 377.771, 93.0019 )
+extents = Vector2( 377.771, 53.066 )
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -23,7 +24,7 @@ shader_param/scroll_speed = 0.5
 
 [node name="Crowd" type="Area2D"]
 space_override = 3
-gravity_vec = Vector2( -15, 1 )
+gravity_vec = Vector2( -5, 1 )
 linear_damp = 10.0
 priority = 128.0
 
@@ -33,13 +34,16 @@ shape = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource( 3 )
-margin_left = 145.0
-margin_top = 389.0
+margin_left = 141.0
+margin_top = 431.0
 margin_right = 899.0
-margin_bottom = 571.0
+margin_bottom = 575.0
 texture = ExtResource( 2 )
 stretch_mode = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="television" parent="." instance=ExtResource( 3 )]
+position = Vector2( 796.055, 258.63 )
