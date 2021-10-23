@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://VectorCreator/VectorCreator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://television/television.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Cable/Cable.tscn" type="PackedScene" id=4]
+
+[node name="PlayerTV" type="Node2D"]
+
+[node name="Cable" parent="." instance=ExtResource( 4 )]
+position = Vector2( 53, 9 )
+rotation = 1.5708
+collision_layer = 2
+
+[node name="Cable2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 21, 9 )
+rotation = 1.5708
+collision_layer = 2
+
+[node name="Cable3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -11, 9 )
+rotation = 1.5708
+collision_layer = 2
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2( 66, 8 )
+node_a = NodePath("../television")
+node_b = NodePath("../Cable")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2( 37, 8 )
+node_a = NodePath("../Cable")
+node_b = NodePath("../Cable2")
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2( 5, 8 )
+node_a = NodePath("../Cable2")
+node_b = NodePath("../Cable3")
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="."]
+position = Vector2( -25, 8 )
+node_a = NodePath("../Cable3")
+node_b = NodePath("../player")
+
+[node name="television" parent="." instance=ExtResource( 3 )]
+position = Vector2( 67.7208, -15.1191 )
+collision_layer = 2
+mass = 1.12245
+gravity_scale = 5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="television"]
+
+[node name="VectorCreator" parent="television/CanvasLayer" instance=ExtResource( 2 )]
+position = Vector2( 817.081, 317.213 )
+
+[node name="Camera2D" type="Camera2D" parent="television"]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -31, -15 )
+mass = 0.510204
+
+[connection signal="vector_created" from="television/CanvasLayer/VectorCreator" to="television" method="launch"]
