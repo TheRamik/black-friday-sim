@@ -1,6 +1,8 @@
 extends Area2D
 
 signal vector_created(vector)
+signal start_position(position_start)
+signal end_position(position_end)
 
 export var maximum_length := 200
 
@@ -34,7 +36,6 @@ func _reset() -> void:
 	update()
 
 func _input(event) -> void:
-	
 	if not touch_down:
 		return
 		
@@ -49,11 +50,13 @@ func _input(event) -> void:
 		update()
 
 func _on_input_event(_viewport, event, _shape_idx) -> void:
-	
 	if event.is_action_pressed("ui_touch"):
 		touch_down = true
 		position_start = event.position
+		#emit_signal("start_position", position_start)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-#	pass
+	#	pass
+	#if touch_down:
+	#	emit_signal("end_position", position_end)

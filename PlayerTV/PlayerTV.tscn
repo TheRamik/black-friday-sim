@@ -16,6 +16,8 @@ shader = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( -283.607, -247.171 )
+default_color = Color( 0.811765, 0.835294, 0.945098, 1 )
 
 [node name="television" parent="." instance=ExtResource( 3 )]
 position = Vector2( 67.7208, -15.1191 )
@@ -26,7 +28,7 @@ gravity_scale = 5.0
 [node name="CanvasLayer" type="CanvasLayer" parent="television"]
 
 [node name="VectorCreator" parent="television/CanvasLayer" instance=ExtResource( 2 )]
-position = Vector2( 817.081, 317.213 )
+position = Vector2( 68.5004, -14.7548 )
 
 [node name="Camera2D" type="Camera2D" parent="television"]
 current = true
@@ -57,7 +59,7 @@ self_modulate = Color( 0.298039, 0.0980392, 0.0980392, 1 )
 light_mask = 13
 material = SubResource( 2 )
 use_parent_material = true
-position = Vector2( 67.4059, -15.119 )
+position = Vector2( 62.9074, -10.2736 )
 rotation = -4.82398
 node_a = NodePath("../television")
 node_b = NodePath("../player")
