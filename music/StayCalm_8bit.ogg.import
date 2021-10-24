@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/StayCalm_8bit.ogg-1c4491b41cd0aef9935ce1ec504d07a2.oggstr"
+
+[deps]
+
+source_file="res://music/StayCalm_8bit.ogg"
+dest_files=[ "res://.import/StayCalm_8bit.ogg-1c4491b41cd0aef9935ce1ec504d07a2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
