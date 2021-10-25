@@ -1,15 +1,26 @@
 extends RigidBody2D
 
+var picked = false 
+var move = false
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-var picked = true
-
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if picked == true:
-		self.position = get_node("../player/Position2D").global_position
+	if move == true:
+		var bodies = $Area2D.get_overlapping_bodies()
+		for body in bodies:
+			if body.name == "player" and get_node("../player").canPick == true:
+				print("picked")
+				picked = true
+				get_node("../player").canPick = false
+				set_applied_force(Vector2())
+
+# Called when there is an input event. 
+func _input(event):
+	if event.is_action_pressed("move_to_object"):
+		move = true
+		
+	if event.is_action_released("move_to_object"):
+		move = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,9 +29,6 @@ func _ready():
 
 func launch(force : Vector2) -> void:
 	picked = false
-	apply_impulse(Vector2.ZERO, force * 3)
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	move = false
+	get_node("../player").canPick = true
+	apply_impulse(Vector2.ZERO, force * 5)

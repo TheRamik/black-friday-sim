@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://VectorCreator/VectorCreator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://television/television.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Cable/Cable.tscn" type="PackedScene" id=4]
 [ext_resource path="res://PlayerTV/PlayerTVv2.gd" type="Script" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 649.748, 10 )
 
 [node name="PlayerTV" type="Node2D"]
 script = ExtResource( 5 )
@@ -67,10 +64,17 @@ position = Vector2( -36.5787, 8.315 )
 node_a = NodePath("../Cable5")
 node_b = NodePath("../player")
 
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -42.8118, -17.3624 )
+collision_layer = 2
+mass = 0.510204
+gravity_scale = 2.5
+toFollow = NodePath("../television")
+followSpeed = 2.0
+
 [node name="television" parent="." instance=ExtResource( 3 )]
 position = Vector2( 107.721, -15.119 )
-collision_layer = 6
-collision_mask = 5
+collision_layer = 2
 mass = 1.53061
 gravity_scale = 5.0
 
@@ -83,21 +87,5 @@ position = Vector2( 817.081, 317.213 )
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
-
-[node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -42.8118, -17.3624 )
-collision_layer = 6
-collision_mask = 5
-mass = 0.510204
-gravity_scale = 2.5
-toFollow = NodePath("../television")
-followSpeed = 2.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 475.176, 555.786 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -411.536, -428.507 )
-shape = SubResource( 1 )
 
 [connection signal="vector_created" from="television/CanvasLayer/VectorCreator" to="television" method="launch"]
