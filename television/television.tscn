@@ -8,7 +8,10 @@ extents = Vector2( 69.6086, 49.066 )
 
 [node name="television" type="RigidBody2D"]
 position = Vector2( -0.944916, 0.629959 )
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 2 )
+cooldownTime = 2.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -26,3 +29,5 @@ shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -0.495727, 14.9323 )
+
+[connection signal="body_entered" from="." to="." method="_on_television_body_entered"]

@@ -10,10 +10,15 @@ func _ready():
 func _process(delta):
 	if $television.picked:
 		$player.position = $television/Position2D.global_position
-		$television/CanvasLayer/VectorCreator.visible = true
+		_enableVectorLauncher()
 	else:
 		$television/CanvasLayer/VectorCreator.visible = false
-	
+
+func _enableVectorLauncher()->void:
+	if $television.colTimerStopped:
+		$television/CanvasLayer/VectorCreator.visible = true
+		$television.colTimerStopped = false
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.	
 func _physics_process(delta):
