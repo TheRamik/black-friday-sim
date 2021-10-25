@@ -9,7 +9,6 @@ func _physics_process(delta):
 		var bodies = $Area2D.get_overlapping_bodies()
 		for body in bodies:
 			if body.name == "player" and get_node("../player").canPick == true:
-				print("picked")
 				picked = true
 				get_node("../player").canPick = false
 				set_applied_force(Vector2())

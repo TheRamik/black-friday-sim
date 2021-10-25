@@ -22,7 +22,7 @@ gravity_scale = 5.0
 [node name="CanvasLayer" type="CanvasLayer" parent="television"]
 
 [node name="VectorCreator" parent="television/CanvasLayer" instance=ExtResource( 2 )]
-position = Vector2( 817.081, 317.213 )
+position = Vector2( 514.073, 298.525 )
 
 [node name="Camera2D" type="Camera2D" parent="television"]
 current = true

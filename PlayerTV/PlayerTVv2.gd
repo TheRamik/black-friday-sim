@@ -10,7 +10,10 @@ func _ready():
 func _process(delta):
 	if $television.picked:
 		$player.position = $television/Position2D.global_position
-		#$player.rotation_degrees += 180
+		$television/CanvasLayer/VectorCreator.visible = true
+	else:
+		$television/CanvasLayer/VectorCreator.visible = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.	
 func _physics_process(delta):

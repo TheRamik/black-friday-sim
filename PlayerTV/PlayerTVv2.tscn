@@ -78,14 +78,14 @@ collision_layer = 2
 mass = 1.53061
 gravity_scale = 5.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="television"]
-
-[node name="VectorCreator" parent="television/CanvasLayer" instance=ExtResource( 2 )]
-position = Vector2( 817.081, 317.213 )
-
 [node name="Camera2D" type="Camera2D" parent="television"]
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="television"]
+
+[node name="VectorCreator" parent="television/CanvasLayer" instance=ExtResource( 2 )]
+position = Vector2( 104.426, -6.24115 )
 
 [connection signal="vector_created" from="television/CanvasLayer/VectorCreator" to="television" method="launch"]
