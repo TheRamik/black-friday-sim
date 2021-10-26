@@ -4,6 +4,7 @@ var picked = false
 var move = false
 var postLaunchCollision = false		#True if the tv has collided with something after being launched
 var colTimerStopped = true
+var cooldownGUI: TextureProgress
 export var cooldownTime:float = 3.0
 onready var t = Timer.new()
 
@@ -15,6 +16,8 @@ func _ready():
 	set_bounce(0.5)
 	set_friction(0.2)
 
+func _process(delta):
+	cooldownGUI.value = t.time_left
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

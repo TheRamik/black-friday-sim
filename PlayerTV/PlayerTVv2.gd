@@ -1,10 +1,14 @@
 extends Node2D
 
+export(NodePath) var cooldownGUINode
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Replace with function body.
 	$player.toFollow = $television
 	$player.objToFollow = $television
+	$television.cooldownGUI = get_node(cooldownGUINode)
+	$television.cooldownGUI.max_value = $television.cooldownTime
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
