@@ -1,15 +1,48 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://PlayerTV/PlayerTVv2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BaeStation5/BaeStation5.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GameOverPopUp/GameOverPopUp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/GUI.gd" type="Script" id=4]
+[ext_resource path="res://UI/PauseMenu.gd" type="Script" id=5]
+[ext_resource path="res://UI/Text.gd" type="Script" id=6]
+[ext_resource path="res://UI/AudioSlider.gd" type="Script" id=7]
+[ext_resource path="res://UI/MainMenu.tres" type="Theme" id=8]
+[ext_resource path="res://UI/CooldownTimerGUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://music/StayCalm_8bit.ogg" type="AudioStream" id=10]
+[ext_resource path="res://obstacle.png" type="Texture" id=11]
+[ext_resource path="res://art/fonts/FH-Millennia WTT/MILLENNIA.TTF" type="DynamicFontData" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 600.514, 60.1491 )
 
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 16, 16 )
+modulate_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://art/fonts/FH-Millennia WTT/MILLENNIA.TTF"
+
+[sub_resource type="DynamicFont" id=6]
+size = 69
+font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+outline_color = Color( 0.690196, 0.654902, 0.654902, 1 )
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=8]
+resource_local_to_scene = true
+size = 30
+outline_color = Color( 0.690196, 0.654902, 0.654902, 1 )
+font_data = ExtResource( 12 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerTV" parent="." instance=ExtResource( 1 )]
+cooldownGUINode = NodePath("../GUI/CooldownProgress")
 
 [node name="BaeStation" parent="." instance=ExtResource( 2 )]
 position = Vector2( 295.894, 12.959 )
@@ -22,4 +55,229 @@ position = Vector2( 2.37842, 101.083 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource( 1 )
 
-[node name="GameOverScreen" parent="." instance=ExtResource( 3 )]
+[node name="GUI" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 2
+script = ExtResource( 4 )
+
+[node name="GameOverScreen" parent="GUI" instance=ExtResource( 3 )]
+layer = 2
+
+[node name="CooldownProgress" parent="GUI" instance=ExtResource( 9 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -144.0
+margin_top = -144.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="PauseMenu" type="Control" parent="GUI"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="GUI/PauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/PauseMenu/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -836.0
+margin_top = -456.0
+margin_right = 836.0
+margin_bottom = 456.0
+custom_constants/separation = 25
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PausedLabel" type="Label" parent="GUI/PauseMenu/Panel/VBoxContainer"]
+margin_top = 220.0
+margin_right = 1672.0
+margin_bottom = 363.0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 6 )
+text = "Paused"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Label" parent="GUI/PauseMenu/Panel/VBoxContainer"]
+margin_top = 388.0
+margin_right = 1672.0
+margin_bottom = 425.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 8 )
+text = "Resume"
+align = 1
+valign = 1
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Label" parent="GUI/PauseMenu/Panel/VBoxContainer"]
+margin_top = 450.0
+margin_right = 1672.0
+margin_bottom = 487.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 8 )
+text = "Main Menu"
+align = 1
+valign = 1
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Label" parent="GUI/PauseMenu/Panel/VBoxContainer"]
+margin_top = 512.0
+margin_right = 1672.0
+margin_bottom = 549.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 8 )
+text = "Options"
+align = 1
+valign = 1
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicLabel" type="Label" parent="GUI/PauseMenu/Panel/VBoxContainer"]
+visible = false
+margin_top = 439.0
+margin_right = 1672.0
+margin_bottom = 516.0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 7 )
+text = "Music"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicSlider" type="HSlider" parent="GUI/PauseMenu/Panel/VBoxContainer"]
+visible = false
+margin_left = 586.0
+margin_top = 490.0
+margin_right = 1086.0
+margin_bottom = 506.0
+grow_horizontal = 2
+rect_min_size = Vector2( 500, 0 )
+size_flags_horizontal = 4
+max_value = 1.0
+step = 0.05
+scrollable = false
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXLabel" type="Label" parent="GUI/PauseMenu/Panel/VBoxContainer"]
+visible = false
+margin_top = 511.0
+margin_right = 1672.0
+margin_bottom = 588.0
+custom_fonts/font = SubResource( 8 )
+text = "Sound"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXSlider" type="HSlider" parent="GUI/PauseMenu/Panel/VBoxContainer"]
+visible = false
+margin_left = 586.0
+margin_top = 562.0
+margin_right = 1086.0
+margin_bottom = 578.0
+grow_horizontal = 2
+rect_min_size = Vector2( 500, 0 )
+size_flags_horizontal = 4
+max_value = 1.0
+step = 0.05
+scrollable = false
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+audio_bus_name = "SFX"
+
+[node name="Quit" type="Label" parent="GUI/PauseMenu/Panel/VBoxContainer"]
+margin_top = 574.0
+margin_right = 1672.0
+margin_bottom = 691.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 8 )
+text = "Quit
+
+"
+align = 1
+valign = 1
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GUI"]
+stream = ExtResource( 10 )
+volume_db = -10.0
+autoplay = true
+bus = "Music"
+
+[connection signal="istouched" from="BaeStation" to="GUI/GameOverScreen" method="_on_BaeStation_istouched"]
+[connection signal="focus_entered" from="GUI/PauseMenu/Panel/VBoxContainer/Resume" to="GUI/PauseMenu/Panel/VBoxContainer/Resume" method="onHover"]
+[connection signal="focus_exited" from="GUI/PauseMenu/Panel/VBoxContainer/Resume" to="GUI/PauseMenu/Panel/VBoxContainer/Resume" method="onExit"]
+[connection signal="gui_input" from="GUI/PauseMenu/Panel/VBoxContainer/Resume" to="GUI/PauseMenu" method="_on_closeMenu_pressed"]
+[connection signal="mouse_entered" from="GUI/PauseMenu/Panel/VBoxContainer/Resume" to="GUI/PauseMenu/Panel/VBoxContainer/Resume" method="onHover"]
+[connection signal="mouse_exited" from="GUI/PauseMenu/Panel/VBoxContainer/Resume" to="GUI/PauseMenu/Panel/VBoxContainer/Resume" method="onExit"]
+[connection signal="focus_entered" from="GUI/PauseMenu/Panel/VBoxContainer/MainMenu" to="GUI/PauseMenu/Panel/VBoxContainer/MainMenu" method="onHover"]
+[connection signal="focus_exited" from="GUI/PauseMenu/Panel/VBoxContainer/MainMenu" to="GUI/PauseMenu/Panel/VBoxContainer/MainMenu" method="onExit"]
+[connection signal="gui_input" from="GUI/PauseMenu/Panel/VBoxContainer/MainMenu" to="GUI/PauseMenu" method="_on_mainMenu_pressed"]
+[connection signal="mouse_entered" from="GUI/PauseMenu/Panel/VBoxContainer/MainMenu" to="GUI/PauseMenu/Panel/VBoxContainer/MainMenu" method="onHover"]
+[connection signal="mouse_exited" from="GUI/PauseMenu/Panel/VBoxContainer/MainMenu" to="GUI/PauseMenu/Panel/VBoxContainer/MainMenu" method="onExit"]
+[connection signal="focus_entered" from="GUI/PauseMenu/Panel/VBoxContainer/Options" to="GUI/PauseMenu/Panel/VBoxContainer/Options" method="onHover"]
+[connection signal="focus_exited" from="GUI/PauseMenu/Panel/VBoxContainer/Options" to="GUI/PauseMenu/Panel/VBoxContainer/Options" method="onExit"]
+[connection signal="gui_input" from="GUI/PauseMenu/Panel/VBoxContainer/Options" to="GUI/PauseMenu" method="_on_options_pressed"]
+[connection signal="mouse_entered" from="GUI/PauseMenu/Panel/VBoxContainer/Options" to="GUI/PauseMenu/Panel/VBoxContainer/Options" method="onHover"]
+[connection signal="mouse_exited" from="GUI/PauseMenu/Panel/VBoxContainer/Options" to="GUI/PauseMenu/Panel/VBoxContainer/Options" method="onExit"]
+[connection signal="mouse_exited" from="GUI/PauseMenu/Panel/VBoxContainer/MusicSlider" to="GUI/PauseMenu/Panel/VBoxContainer/MusicSlider" method="release_focus"]
+[connection signal="value_changed" from="GUI/PauseMenu/Panel/VBoxContainer/MusicSlider" to="GUI/PauseMenu/Panel/VBoxContainer/MusicSlider" method="_on_value_changed"]
+[connection signal="mouse_exited" from="GUI/PauseMenu/Panel/VBoxContainer/SFXSlider" to="GUI/PauseMenu/Panel/VBoxContainer/SFXSlider" method="release_focus"]
+[connection signal="value_changed" from="GUI/PauseMenu/Panel/VBoxContainer/SFXSlider" to="GUI/PauseMenu/Panel/VBoxContainer/SFXSlider" method="_on_value_changed"]
+[connection signal="focus_entered" from="GUI/PauseMenu/Panel/VBoxContainer/Quit" to="GUI/PauseMenu/Panel/VBoxContainer/Quit" method="onHover"]
+[connection signal="focus_exited" from="GUI/PauseMenu/Panel/VBoxContainer/Quit" to="GUI/PauseMenu/Panel/VBoxContainer/Quit" method="onExit"]
+[connection signal="gui_input" from="GUI/PauseMenu/Panel/VBoxContainer/Quit" to="GUI/PauseMenu" method="_on_exitGame_pressed"]
+[connection signal="mouse_entered" from="GUI/PauseMenu/Panel/VBoxContainer/Quit" to="GUI/PauseMenu/Panel/VBoxContainer/Quit" method="onHover"]
+[connection signal="mouse_exited" from="GUI/PauseMenu/Panel/VBoxContainer/Quit" to="GUI/PauseMenu/Panel/VBoxContainer/Quit" method="onExit"]

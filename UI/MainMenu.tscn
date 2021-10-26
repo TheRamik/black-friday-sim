@@ -67,16 +67,16 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 784.0
+margin_right = 1040.0
 margin_bottom = 577.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 784.0
+margin_right = 1040.0
 margin_bottom = 72.0
 
 [node name="PlayerTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 material = ExtResource( 6 )
-margin_right = 708.0
+margin_right = 964.0
 margin_bottom = 72.0
 size_flags_horizontal = 3
 texture = ExtResource( 4 )
@@ -87,8 +87,8 @@ position = Vector2( 29.3997, 7.1272 )
 
 [node name="TVTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 material = SubResource( 2 )
-margin_left = 712.0
-margin_right = 784.0
+margin_left = 968.0
+margin_right = 1040.0
 margin_bottom = 72.0
 texture = ExtResource( 1 )
 
@@ -97,7 +97,7 @@ position = Vector2( 19.0818, 22.4492 )
 
 [node name="TitleText" type="Label" parent="VBoxContainer"]
 margin_top = 76.0
-margin_right = 784.0
+margin_right = 1040.0
 margin_bottom = 125.0
 size_flags_vertical = 1
 theme = ExtResource( 2 )
@@ -107,7 +107,7 @@ align = 1
 
 [node name="MenuOptions" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 129.0
-margin_right = 784.0
+margin_right = 1040.0
 margin_bottom = 548.0
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -117,7 +117,7 @@ script = ExtResource( 9 )
 
 [node name="StartText" type="Label" parent="VBoxContainer/MenuOptions"]
 margin_top = 124.0
-margin_right = 784.0
+margin_right = 1040.0
 margin_bottom = 161.0
 focus_neighbour_top = NodePath("../QuitText")
 focus_neighbour_bottom = NodePath("../OptionsText")
@@ -130,7 +130,7 @@ script = ExtResource( 7 )
 
 [node name="OptionsText" type="Label" parent="VBoxContainer/MenuOptions"]
 margin_top = 191.0
-margin_right = 784.0
+margin_right = 1040.0
 margin_bottom = 228.0
 focus_neighbour_top = NodePath("../StartText")
 focus_neighbour_bottom = NodePath("../QuitText")
@@ -143,7 +143,7 @@ script = ExtResource( 7 )
 
 [node name="QuitText" type="Label" parent="VBoxContainer/MenuOptions"]
 margin_top = 258.0
-margin_right = 784.0
+margin_right = 1040.0
 margin_bottom = 295.0
 focus_neighbour_top = NodePath("../OptionsText")
 focus_neighbour_bottom = NodePath("../StartText")
@@ -156,7 +156,7 @@ script = ExtResource( 7 )
 
 [node name="CreditsText" type="Label" parent="VBoxContainer"]
 margin_top = 552.0
-margin_right = 784.0
+margin_right = 1040.0
 margin_bottom = 577.0
 custom_fonts/font = SubResource( 5 )
 text = "Created by Ricky Tham and Efren Aguilar"
@@ -178,7 +178,7 @@ bus = "Music"
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
 visible = true
-margin_right = 784.0
+margin_right = 1040.0
 margin_bottom = 577.0
 script = ExtResource( 10 )
 
@@ -187,9 +187,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -388.0
+margin_left = -516.0
 margin_top = -284.5
-margin_right = 388.0
+margin_right = 516.0
 margin_bottom = 284.5
 custom_constants/separation = 25
 alignment = 1
@@ -198,7 +198,7 @@ __meta__ = {
 }
 
 [node name="OptionsLabel" type="Label" parent="PopupPanel/VBoxContainer"]
-margin_right = 776.0
+margin_right = 1032.0
 margin_bottom = 101.0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 7 )
@@ -212,7 +212,7 @@ __meta__ = {
 
 [node name="MusicLabel" type="Label" parent="PopupPanel/VBoxContainer"]
 margin_top = 126.0
-margin_right = 776.0
+margin_right = 1032.0
 margin_bottom = 203.0
 size_flags_vertical = 0
 theme = ExtResource( 2 )
@@ -225,9 +225,9 @@ __meta__ = {
 }
 
 [node name="MusicSlider" type="HSlider" parent="PopupPanel/VBoxContainer"]
-margin_left = 138.0
+margin_left = 266.0
 margin_top = 228.0
-margin_right = 638.0
+margin_right = 766.0
 margin_bottom = 244.0
 grow_horizontal = 2
 rect_min_size = Vector2( 500, 0 )
@@ -242,7 +242,7 @@ __meta__ = {
 
 [node name="SFXLabel" type="Label" parent="PopupPanel/VBoxContainer"]
 margin_top = 269.0
-margin_right = 776.0
+margin_right = 1032.0
 margin_bottom = 346.0
 theme = ExtResource( 2 )
 text = "Sound
@@ -253,9 +253,9 @@ __meta__ = {
 }
 
 [node name="SFXSlider" type="HSlider" parent="PopupPanel/VBoxContainer"]
-margin_left = 138.0
+margin_left = 266.0
 margin_top = 371.0
-margin_right = 638.0
+margin_right = 766.0
 margin_bottom = 387.0
 grow_horizontal = 2
 rect_min_size = Vector2( 500, 0 )
@@ -271,7 +271,7 @@ audio_bus_name = "SFX"
 
 [node name="Back" type="Label" parent="PopupPanel/VBoxContainer"]
 margin_top = 412.0
-margin_right = 776.0
+margin_right = 1032.0
 margin_bottom = 569.0
 focus_mode = 2
 mouse_filter = 0

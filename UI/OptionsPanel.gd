@@ -1,10 +1,5 @@
 extends PopupPanel
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 func openOptionsMenu():
 	popup_centered()
 	
