@@ -5,6 +5,15 @@ export var followSpeed: float
 onready var sfx_player = $RandomSFXPlayer
 var objToFollow : CollisionObject2D
 
+var colTimerStopped = true
+export var sfxCooldownTime:float = 1.0
+onready var t = Timer.new()
+
+func _ready():
+	t.set_wait_time(sfxCooldownTime)
+	t.set_one_shot(true)
+	self.add_child(t)
+
 
 # Declare member variables here.
 var moveVector : Vector2
@@ -40,4 +49,12 @@ func _physics_process(delta):
 
 
 func _on_player_body_entered(body):
-	sfx_player.play_random()
+	if colTimerStopped:
+		start_collision_timer()
+		sfx_player.play_random()
+
+func start_collision_timer() -> void:
+	colTimerStopped = false
+	t.start()
+	yield(t, "timeout")
+	colTimerStopped = true
