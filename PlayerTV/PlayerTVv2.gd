@@ -2,6 +2,9 @@ extends Node2D
 
 export(NodePath) var cooldownGUINode
 
+export var debugModeEnabledInGame = false
+var debugModeOn = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Replace with function body.
@@ -17,6 +20,9 @@ func _process(delta):
 		_enableVectorLauncher()
 	else:
 		$television/CanvasLayer/VectorCreator.visible = false
+		
+	if debugModeOn:
+		$television.position = get_global_mouse_position()
 
 func _enableVectorLauncher()->void:
 	if $television.colTimerStopped:
@@ -29,3 +35,7 @@ func _physics_process(delta):
 	if $television.picked:
 		$player.add_force(Vector2(), Vector2())
 		$player.set_applied_force(Vector2())
+		
+func _input(event):
+	if debugModeEnabledInGame and event.is_action_pressed("debug"):
+		debugModeOn = !debugModeOn
