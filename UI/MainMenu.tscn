@@ -175,6 +175,7 @@ pointB = NodePath("../VBoxContainer/HBoxContainer/TVTexture/TVAnchor")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -10.0
 autoplay = true
 bus = "Music"
 
