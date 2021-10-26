@@ -286,11 +286,6 @@ volume_db = -10.0
 autoplay = true
 bus = "Music"
 
-[node name="SFXPlayer_Main" type="AudioStreamPlayer" parent="GUI"]
-stream = ExtResource( 14 )
-volume_db = -10.0
-bus = "Music"
-
 [connection signal="istouched" from="BaeStation" to="GUI/GameOverScreen" method="_on_BaeStation_istouched"]
 [connection signal="focus_entered" from="GUI/PauseMenu/Panel/VBoxContainer/Resume" to="GUI/PauseMenu/Panel/VBoxContainer/Resume" method="onHover"]
 [connection signal="focus_exited" from="GUI/PauseMenu/Panel/VBoxContainer/Resume" to="GUI/PauseMenu/Panel/VBoxContainer/Resume" method="onExit"]
