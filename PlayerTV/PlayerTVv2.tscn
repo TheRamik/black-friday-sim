@@ -70,7 +70,7 @@ collision_layer = 2
 mass = 0.510204
 gravity_scale = 2.5
 toFollow = NodePath("../television")
-followSpeed = 2.0
+followSpeed = 2.5
 
 [node name="television" parent="." instance=ExtResource( 3 )]
 position = Vector2( 107.721, -15.119 )
