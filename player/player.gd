@@ -2,6 +2,7 @@ extends RigidBody2D
 
 export(NodePath) var toFollow
 export var followSpeed: float
+onready var sfx_player = $RandomSFXPlayer
 var objToFollow : CollisionObject2D
 
 
@@ -36,3 +37,7 @@ func _physics_process(delta):
 		$Sprite.set_flip_h(false)
 	else:
 		$Sprite.set_flip_h(true)
+
+
+func _on_player_body_entered(body):
+	sfx_player.play_random()

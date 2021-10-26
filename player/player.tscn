@@ -1,9 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player/player1.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
+[ext_resource path="res://sfx/BFS_Hit02.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/BFS_Hit03.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/BFS_Hit01.wav" type="AudioStream" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends AudioStreamPlayer
+
+export(Array, AudioStream) var audio_files: Array
+var audio_files_size: int
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	randomize()
+	audio_files_size = audio_files.size()
+
+func play_random() ->  void:
+	var random_index: = randi() % audio_files.size()
+	stop()
+	stream = audio_files[random_index]
+	play()
+"
 
 [node name="player" type="RigidBody2D"]
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -13,3 +41,9 @@ texture = ExtResource( 1 )
 position = Vector2( 0.46391, 0.712368 )
 scale = Vector2( 1.80433, 3.14784 )
 polygon = PoolVector2Array( -5.84534, -2.81677, -5.94331, -9.2188, 5.32362, -9.27496, 5.12767, -2.92908, 7.57701, -2.87293, 7.47904, 4.8769, 5.22565, 4.8769, 5.32362, 8.69565, 2.97226, 8.63949, 3.26618, 4.93305, -3.49398, 4.98921, -3.59195, 8.69565, -5.84534, 8.69565, -5.74737, 4.8769, -8.1967, 4.8769, -8.00075, -2.76061, -6.13926, -2.81677 )
+
+[node name="RandomSFXPlayer" type="AudioStreamPlayer" parent="."]
+script = SubResource( 1 )
+audio_files = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
+
+[connection signal="body_entered" from="." to="." method="_on_player_body_entered"]

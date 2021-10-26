@@ -7,6 +7,7 @@ var colTimerStopped = true
 var cooldownGUI: TextureProgress
 export var cooldownTime:float = 3.0
 onready var t = Timer.new()
+onready var sfx_player := $RandomSFXPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,6 +40,7 @@ func _input(event):
 		move = false
 	
 func launch(force : Vector2) -> void:
+	sfx_player.play_random()
 	start_collision_timer()
 	picked = false
 	move = false
