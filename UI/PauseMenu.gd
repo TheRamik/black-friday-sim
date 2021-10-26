@@ -26,6 +26,14 @@ func _on_closeMenu_pressed(event):
 	elif(event is InputEventKey && event.pressed && event.scancode == KEY_ENTER):
 		closePauseMenu()
 		
+func _on_restart_pressed(event):
+	if(event is InputEventMouseButton && event.pressed && event.button_index == 1):
+		closePauseMenu()
+		get_tree().change_scene("res://Main/main.tscn")
+	elif(event is InputEventKey && event.pressed && event.scancode == KEY_ENTER):
+		closePauseMenu()
+		get_tree().change_scene("res://Main/main.tscn")
+		
 func _on_mainMenu_pressed(event):
 	if(event is InputEventMouseButton && event.pressed && event.button_index == 1):
 		closePauseMenu()

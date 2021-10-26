@@ -36,6 +36,7 @@ shape = SubResource( 1 )
 position = Vector2( -0.495727, 14.9323 )
 
 [node name="RandomSFXPlayer" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 script = ExtResource( 3 )
 audio_files = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 6 ) ]
 

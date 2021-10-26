@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://tile01.png" type="Texture" id=1]
 [ext_resource path="res://UI/PauseMenu.gd" type="Script" id=2]
 [ext_resource path="res://PlayerTV/PlayerTVv2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/AudioSlider.gd" type="Script" id=4]
@@ -16,7 +16,7 @@
 [ext_resource path="res://sfx/BFS_Hit01.wav" type="AudioStream" id=14]
 [ext_resource path="res://UI/SFXSlider.gd" type="Script" id=15]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 points = PoolVector2Array( 63, 59, 0, 59, 0, 1, 63, 1 )
 
 [sub_resource type="TileSet" id=2]
@@ -30,14 +30,14 @@ points = PoolVector2Array( 63, 59, 0, 59, 0, 1, 63, 1 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 1 )
+0/shape = SubResource( 8 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 1 ),
+"shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0

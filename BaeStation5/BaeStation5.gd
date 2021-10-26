@@ -13,7 +13,6 @@ func _process(delta):
 	var bodies = $Area2D.get_overlapping_bodies()
 	for body in bodies:
 		if body.name == "player":
-			print("touched: ", touched)
 			touched = true
 			emit_signal("istouched", touched)
 			touched = false
