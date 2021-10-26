@@ -272,6 +272,7 @@ __meta__ = {
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="PopupPanel/VBoxContainer/SFXSlider"]
 stream = ExtResource( 12 )
+autoplay = true
 bus = "SFX"
 
 [node name="Back" type="Label" parent="PopupPanel/VBoxContainer"]
