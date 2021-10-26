@@ -45,12 +45,12 @@ texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 16, 16 )
 modulate_color = Color( 0, 0, 0, 0.392157 )
 
-[sub_resource type="DynamicFontData" id=8]
+[sub_resource type="DynamicFontData" id=4]
 font_path = "res://art/fonts/FH-Millennia WTT/MILLENNIA.TTF"
 
 [sub_resource type="DynamicFont" id=5]
 size = 69
-font_data = SubResource( 8 )
+font_data = SubResource( 4 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 30

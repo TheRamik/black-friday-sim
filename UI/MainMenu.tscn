@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://television/wide_tv.png" type="Texture" id=1]
 [ext_resource path="res://UI/MainMenu.tres" type="Theme" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=9]
 [ext_resource path="res://UI/OptionsPanel.gd" type="Script" id=10]
 [ext_resource path="res://UI/AudioSlider.gd" type="Script" id=11]
+[ext_resource path="res://sfx/BFS_Hit01.wav" type="AudioStream" id=12]
+[ext_resource path="res://UI/SFXSlider.gd" type="Script" id=13]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -171,7 +173,7 @@ script = ExtResource( 5 )
 pointA = NodePath("../VBoxContainer/HBoxContainer/PlayerTexture/PlayerAnchor")
 pointB = NodePath("../VBoxContainer/HBoxContainer/TVTexture/TVAnchor")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
 bus = "Music"
@@ -263,11 +265,14 @@ size_flags_horizontal = 4
 max_value = 1.0
 step = 0.05
 scrollable = false
-script = ExtResource( 11 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-audio_bus_name = "SFX"
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="PopupPanel/VBoxContainer/SFXSlider"]
+stream = ExtResource( 12 )
+bus = "SFX"
 
 [node name="Back" type="Label" parent="PopupPanel/VBoxContainer"]
 margin_top = 412.0
